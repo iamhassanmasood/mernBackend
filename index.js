@@ -15,3 +15,14 @@ connection.once("open", function () {
     console.log("mongodb database connected");
 });
 
+ToDoRoutes.route('/').get(function (req, res) {
+    Todo.find(function (err, todos) {
+        if (err) {
+            console.log("error", error);
+        }
+        else {
+            res.json(todos);
+        }
+    });
+});
+

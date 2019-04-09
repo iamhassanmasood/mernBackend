@@ -6,3 +6,4 @@ const mongoose = require('mongoose');
 const PORT = 4000;
 const Todo = require('./schema');
 const ToDoRoutes = express.Router();
+const connection = mongoose.connection;

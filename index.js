@@ -26,3 +26,10 @@ ToDoRoutes.route('/').get(function (req, res) {
     });
 });
 
+ToDoRoutes.route('/:id').get(function (req, res) {
+    const id = req.params.id;
+    Todo.findById(id, function (err, todo) {
+        res.json(todo);
+    });
+});
+

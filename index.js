@@ -62,3 +62,5 @@ ToDoRoutes.route('/update/:id').post(function (req, res) {
     });
 });
 
+app.use('/todos', ToDoRoutes);
+app.listen(PORT);

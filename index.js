@@ -44,3 +44,21 @@ ToDoRoutes.route('/add').post(function (req, res) {
 
 });
 
+ToDoRoutes.route('/update/:id').post(function (req, res) {
+    Todo.findById(req.params.id, function(err, todo) {
+        if(!todo)
+            res.status(404).send('data is not available');
+        else
+            todos.todoDescription = req.body.todoDescription;
+            todos.todoResponsible = req.body.todoResponsible;
+            todos.todoPriority = req.body.todoPriority;
+            todos.todoCompleted = req.body.todoCompleted;        
+        todos.save().then(todo => {
+            res.json('Todo Updated');
+        })
+        .catch(err=>{
+            res.status(400).send("Update Not Possible")
+        })
+    });
+});
+
